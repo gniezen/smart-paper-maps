@@ -1,10 +1,16 @@
 label {
     font-family: sans-serif;
     font-size: 3rem;
-    padding: 20px 30px;
+    padding: 10px 10px;
 }
 
 select {
     font-size: 3rem;
-    padding: 10px 30px 10px 30px;
+    padding: 10px 10px;
+}
+
+.buttons{
+    height:100px;
+    width:200px;
+    font-size: xx-large;
 }

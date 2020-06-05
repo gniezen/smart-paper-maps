@@ -1,8 +1,11 @@
 const db = firebase.firestore();
 
-document.addEventListener('DOMContentLoaded', event => {
-  const scanButton = document.getElementById('scan')
+window.addEventListener('load', event => {
   const reader = new NDEFReader();
+  const scanButton = document.getElementById('scan');
+  const svgObject = document.getElementById('svgObject');
+  const svgDoc = svgObject.contentDocument;
+  console.log(svgDoc);
   
   scanButton.addEventListener('click', async () => {
     try {
@@ -21,13 +24,25 @@ document.addEventListener('DOMContentLoaded', event => {
       const data = room.data();
       console.log(room.id, '=>', data);
       
+      const svgItem = svgDoc.getElementById(room.id);
+      console.log(svgItem);
+      
+      svgItem.addEventListener('click', function (event) {
+	      console.log('YES!', event.path[1].id);
+	      event.path.forEach(path => {
+	      console.log(path.id);
+	      });
+      }, false);
+      
       document.getElementById("p1").innerHTML = `You are in the ${data.name}.`;
       
       if (data.occupied) {
         document.getElementById("p2").innerHTML = `You found them!`;
+        svgItem.setAttribute('style', 'fill:lime;stroke:#000000;stroke-width:1.5;stroke-opacity:1');
       } else {
         document.getElementById("p2").innerHTML = `It is empty.`;
+        svgItem.setAttribute('style', 'fill:red;stroke:#000000;stroke-width:1.5;stroke-opacity:1');
       }
     });
   };
-});
+}, false);

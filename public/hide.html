@@ -2,13 +2,14 @@
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Hide</title>
-  <script defer src="https://www.gstatic.com/firebasejs/7.14.6/firebase-app.js"></script>
-  <script defer src="https://www.gstatic.com/firebasejs/7.14.6/firebase-firestore.js"></script>
-  <script defer src="./init-firebase.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/7.14.6/firebase-app.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/7.14.6/firebase-firestore.js"></script>
+    <script defer src="./init-firebase.js"></script>
     <script defer src="hide.js"></script>
     <link rel="stylesheet" type="text/css" href="hide.css">
   </head>
   <body>
+    <button id="hide" class="buttons">Hide</button>
     <p><label for="hide-select">Where are you hiding?</label></p>
     <select id="hide-select">
         <option value="">--Please choose an option--</option>
@@ -18,5 +19,6 @@
         <option value="study">Study</option>
         <option value="kitchen">Kitchen</option>
     </select>
+    <object id="svgObject" type="image/svg+xml" data="img/home.svg" height="150%"></object>
   </body>
 </html>
