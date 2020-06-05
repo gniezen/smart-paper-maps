@@ -27,13 +27,6 @@ window.addEventListener('load', event => {
       const svgItem = svgDoc.getElementById(room.id);
       console.log(svgItem);
       
-      svgItem.addEventListener('click', function (event) {
-	      console.log('YES!', event.path[1].id);
-	      event.path.forEach(path => {
-	      console.log(path.id);
-	      });
-      }, false);
-      
       document.getElementById("p1").innerHTML = `You are in the ${data.name}.`;
       
       if (data.occupied) {

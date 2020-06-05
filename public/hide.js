@@ -2,32 +2,9 @@ const selector = document.getElementById('hide-select');
 const db = firebase.firestore();
 
 window.addEventListener('load', async event => {
-  const hideButton = document.getElementById('hide');
-
-  
-  hideButton.addEventListener('click', async () => {
-    
-  
-    const query = await db.collection('rooms').get();    
-    query.forEach(room => {
-      const data = room.data();
-      console.log(room.id, '=>', data);
-      
-      const svgObject = document.getElementById('svgObject');
-      const svgDoc = svgObject.contentDocument;
-      console.log(svgDoc);
-      
-      const svgItem = svgDoc.getElementById(room.id);
-      console.log(svgItem);
-      
-      if (svgItem != null) {
-        console.log('Adding event listener for', room.id, svgItem);
-        svgItem.addEventListener('click', function (event) {
-	        console.log('YES!', event, event.path[1].id);
-        }, false);
-      }
-    });
-  });
+  const svgObject = document.getElementById('svgObject');
+  const svgDoc = svgObject.contentDocument;
+  console.log(svgDoc);
   
   selector.addEventListener('click', async () => {
     const roomId = selector.value;
@@ -40,6 +17,10 @@ window.addEventListener('load', async event => {
       };
       
       await roomRef.update(fields);
+      
+      const svgItem = svgDoc.getElementById(roomId);
+      console.log(svgItem);
+      svgItem.setAttribute('style', 'fill:none;stroke:#000000;stroke-width:1.5;stroke-opacity:1');
     }
   });
 
@@ -54,6 +35,10 @@ window.addEventListener('load', async event => {
     };
     
     await roomRef.update(fields);
+    
+    const svgItem = svgDoc.getElementById(roomId);
+    console.log(svgItem);
+    svgItem.setAttribute('style', 'fill:lime;stroke:#000000;stroke-width:1.5;stroke-opacity:1');
   });
 });
 

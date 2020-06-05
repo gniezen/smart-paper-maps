@@ -1,11 +1,11 @@
 label {
     font-family: sans-serif;
-    font-size: 3rem;
+    font-size: 1rem;
     padding: 10px 10px;
 }
 
 select {
-    font-size: 3rem;
+    font-size: 1rem;
     padding: 10px 10px;
 }
 
@@ -13,4 +13,9 @@ select {
     height:100px;
     width:200px;
     font-size: xx-large;
+    padding: 10px;
+}
+
+.svgObject{
+    padding: 10px;
 }
